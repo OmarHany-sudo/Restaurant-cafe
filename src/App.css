@@ -1,8 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  /* إضافة ترانزيشن للسماح بتغيير الخلفية أو الحدود بسلاسة */
+  transition: background-color 0.3s ease, padding 0.3s ease;
 }
 
 .logo {
@@ -33,10 +39,43 @@
   }
 }
 
+/* تحسين بطاقة (card) مع ترانزيشن وحركة */
 .card {
   padding: 2em;
+  @apply bg-card text-card-foreground rounded-lg shadow-md; /* دمج Tailwind */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* ترانزيشن للتغيير */
 }
 
+.card:hover {
+  @apply transform scale-105 shadow-lg; /* زيادة الحجم وعمق الظل عند التفاعل */
+  /* إضافة حركة خفيفة */
+  animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+/* أسلوب لعنصر القراءة */
 .read-the-docs {
   color: #888;
+  @apply transition-colors duration-300;
+}
+
+.read-the-docs:hover {
+  color: #555; /* تغيير اللون عند التفاعل */
+}
+
+/* إضافة تأثير عام للروابط */
+a {
+  @apply text-primary underline transition-colors duration-200;
+}
+
+a:hover {
+  @apply text-primary-foreground;
 }
