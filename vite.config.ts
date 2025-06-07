@@ -5,8 +5,8 @@ import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   server: {
-    host: "::",
-    port: 8080,
+    host: "::", // يسمح بالوصول من أي عنوان IP
+    port: 8080, // منفذ مخصص
   },
   plugins: [react()],
   resolve: {
@@ -15,6 +15,12 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    outDir: "dist/client", // إضافة هذا السطر
+    outDir: "dist/client", // مجلد الإخراج ليطابق Netlify
+    minify: true, // تقليص الكود لتحسين الأداء
+    sourcemap: mode === "development", // إنشاء خريطة المصادر في التطوير فقط
+  },
+  css: {
+    // دعم تحسين CSS مع الترانزيشنز
+    devSourcemap: mode === "development", // خريطة مصادر CSS في التطوير
   },
 }));
