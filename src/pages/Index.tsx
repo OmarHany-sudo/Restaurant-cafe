@@ -15,6 +15,8 @@ const Index = () => {
         <About />
         <MenuHighlights />
         <Testimonials />
+        {/* إضافة البطاقة هنا بعد Testimonials */}
+        <div className="card">This is a card with hover animation</div>
         <Contact />
       </main>
       <Footer />
